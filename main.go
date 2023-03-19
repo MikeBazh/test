@@ -17,13 +17,11 @@ var err bool = false   //для проверки, нарушен ли форма
 
 func main() {
 	rim := [10]string{"I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX", "X"}
-	//rimOut := [10]string{"I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX", "X", "XI", "XII", "XIII", "XIV", "XV", "XVI", "XVII", "XVIII", "XIX", "XX"}
 	// считывание строки
 	reader := bufio.NewReader(os.Stdin)
 	fmt.Println("введите выражение")
 	text, _ := reader.ReadString('\n')
 	data := strings.Fields(text)
-	//fmt.Printf("%q\n", data)
 	if len(data) > 3 {
 		fmt.Println("Ошибка, формат операции не удовлетворяет заданию")
 	}
@@ -50,10 +48,6 @@ func main() {
 	//проверка, введены ли арабские числа
 	_, e1 = strconv.Atoi(Input1)
 	_, e2 = strconv.Atoi(Input2)
-	//fmt.Printf("%v\t%v\n", e1, e2)
-	//fmt.Printf("%v\t%v\n", rims1, rims2)
-	//fmt.Printf("%v\t%v\t%v\n", rims1 && (e2 != nil), rims2 && (e1 != nil), !(rims1 && rims2))
-
 	if (e1 != nil || e2 != nil) && !(rims1 || rims2) {
 		fmt.Println("ошибка, введено неверное число")
 		err = true
@@ -81,7 +75,6 @@ func main() {
 			}
 		default:
 			fmt.Println("Ошибка, неверный формат операции, введите строку в формате 'число оператор число'")
-
 		}
 	}
 	if !err && (rims1 && (e2 == nil) || rims2 && (e1 == nil)) && !(rims1 && rims2) {
@@ -91,7 +84,6 @@ func main() {
 	if !err && !(rims1 && rims2) {
 		Numb1, e1 = strconv.Atoi(Input1)
 		Numb2, e2 = strconv.Atoi(Input2)
-		//fmt.Printf("%v\t%v\n", e1, e2)
 		err = true
 		if Numb1 <= 10 && Numb2 <= 10 && Numb1 > 0 && Numb2 > 0 {
 			err = false
@@ -112,7 +104,6 @@ func main() {
 			default:
 				fmt.Println("Ошибка, неверный формат операции, введите строку в формате 'число оператор число'")
 			}
-
 		}
 		if err {
 			fmt.Println("Ошибка, калькулятор принимает на вход только числа от 1 до 10")
